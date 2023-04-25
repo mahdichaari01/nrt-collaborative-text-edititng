@@ -5,7 +5,7 @@ import { SessionsModule } from './sessions/sessions.module';
 import { RabbitMqManagementModule } from './rabbit-mq-management/rabbit-mq-management.module';
 
 @Module({
-  imports: [RabbitMqManagementModule,SessionsModule],
+  imports: [SessionsModule, RabbitMqManagementModule],
   controllers: [AppController],
   providers: [AppService],
 })
