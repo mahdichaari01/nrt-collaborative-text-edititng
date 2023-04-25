@@ -6,7 +6,7 @@ import { Injectable } from '@nestjs/common';
 export class RabbitMqManagementService {
 	constructor() {
 		this.client = new AMQPClient('amqp://guest:guest@localhost');
-		this.client.onerror = this.onError;
+		this.client.onerror = this.onError.bind(this);
 		this.connected = false;
 		this.connect();
 	}
@@ -24,6 +24,8 @@ export class RabbitMqManagementService {
 		}
 	}
 	onError(error: any) {
+		console.log(`this.retries `,this.retries );
+
 		this.connected = false;
 		console.log(error.message);
 		if (this.retries > 0) {
@@ -57,7 +59,7 @@ export class RabbitMqManagementService {
 		return await channel.queue(name, { autoDelete: autodelete });
 	}
 
-	private async createQueueAndBindToExchange(
+	public async createQueueAndBindToExchange(
 		exchangeName: string,
 		queueName: string,
 		exchangeType: 'fanout' | 'direct' | 'topic' | 'headers' = 'fanout',
