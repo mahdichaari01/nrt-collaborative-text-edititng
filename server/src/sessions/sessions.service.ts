@@ -11,12 +11,11 @@ export class SessionsService {
   async connectUser() {
     const userId = uuid();
     try {
-      await this.rabbitMqService.createQueueAndBindToExchange("exchange","test")
-      return userId
+      await this.rabbitMqService.createQueueAndBindToExchange("exchange",userId)
+      return {userId , exchangeName :"exchange",queueName:userId}
     } catch (e) {
-      console.log('Error creating the connect', e);
-      throw new Error(e);
+      console.log('Error creating Queue', e);
+      throw new Error("Error creating Queue");
     }
-    return userId;
   }
 }

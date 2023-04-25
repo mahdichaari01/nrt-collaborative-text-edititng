@@ -14,6 +14,7 @@ export class RabbitMqManagementService {
 	private connection: AMQPBaseClient;
 	private retries = 5;
 	private connected: boolean;
+
 	async connect() {
 		try {
 			this.connection = await this.client.connect();
@@ -23,6 +24,7 @@ export class RabbitMqManagementService {
 			this.onError(error);
 		}
 	}
+
 	onError(error: any) {
 		console.log(`this.retries `,this.retries );
 
@@ -38,10 +40,12 @@ export class RabbitMqManagementService {
 			throw new Error("Can't connect to RabbitMQ");
 		}
 	}
+
 	private async getChannel() {
 		if (this.connected) return await this.connection.channel();
 		else throw new Error('RabbitMQ is not connected');
 	}
+	
 	private async createExchange(
 		name: string,
 		type: string,
