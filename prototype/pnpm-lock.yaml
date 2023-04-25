@@ -1,0 +1,14 @@
+lockfileVersion: 5.4
+
+specifiers:
+  '@cloudamqp/amqp-client': ^2.1.1
+
+dependencies:
+  '@cloudamqp/amqp-client': 2.1.1
+
+packages:
+
+  /@cloudamqp/amqp-client/2.1.1:
+    resolution: {integrity: sha512-u4nOBfpBTEiohQ/ThJVLmHx+G7mUt1aTXsLqhGVZAnTnA1AZpq/ja1Lhx7equRuE48AhQKS/UDQpV+7grLEF4Q==}
+    engines: {node: '>=12.0.0'}
+    dev: false
