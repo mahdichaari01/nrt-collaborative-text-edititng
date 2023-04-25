@@ -35,7 +35,6 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 #pnpm 
-.pnpm-store
-.pnpm
-.pnpm-lock.yaml
-pnpm-debug.log*
+
+pnpm-lock.yaml
+
